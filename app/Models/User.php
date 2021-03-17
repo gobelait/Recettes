@@ -40,4 +40,25 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Run the database seeders.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        User::factory()
+                ->count(1)
+                ->create();
+    }
+
+    /**
+     * Get the user recipes'
+     */
+    public function recipes()
+    {
+        return $this->hasMany(Recipe::class,'author_id');
+    }
+
 }
