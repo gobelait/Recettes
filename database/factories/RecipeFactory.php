@@ -25,7 +25,7 @@ class RecipeFactory extends Factory
     {
 
         return [
-            'title' => 'Le Faux Titre',
+            'title' => $this->faker->unique()->regexify('[a-z]{15}'),
             'content' => $this->faker->text,
             'ingredients' => $this->faker->text,
             'url' => $this->faker->text(200),
