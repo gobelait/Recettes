@@ -1,3 +1,4 @@
+<?php use App\Models\User ?>
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -11,7 +12,12 @@
 @extends('layouts/main')
 
       @section('content')
-      <h1>Recettes</h1>
+
+
+      <h1>Recettes : {{$recipe->title}}  </h1>
+
+      <h1> Auteur : {{$author->name}}  </h1>
+
       @endsection
 
     </body>
