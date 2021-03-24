@@ -26,6 +26,8 @@ Route::get('/recettes', [RecipesController::class, 'index']);
 
 use App\Http\Controllers\ContactController;
 Route::get('/contact', [ContactController::class, 'index']);
+Route::post('/contact', [ContactController::class, 'store']);
 
 
 Route::get('/recettes/{url}',[RecipesController::class, 'show']);
+
