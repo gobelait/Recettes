@@ -18,7 +18,7 @@ class CreateContactTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->mediumText('message');
-            $table->DateTime('date');
+            $table->dateTime('date')->useCurrent();
         });
     }
 
