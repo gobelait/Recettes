@@ -35,4 +35,4 @@ Route::resource('/admin/recettes', RecettesController::class);
 //Controlleurs pour le formulaire de contact
 use App\Http\Controllers\ContactController;
 Route::get('/contact', [ContactController::class, 'index']);
-Route::post('/contact', [ContactController::class, 'store']);
+Route::post('/contact', [ContactController::class, 'store']); //VU A FAIRE

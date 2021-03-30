@@ -14,7 +14,11 @@ class RecettesController extends Controller
      */
     public function index()
     {
-        return view('recipes');
+      $recipes = \App\Models\Recipe::get();
+
+      return view('recipes',array(
+          'recipes' => $recipes
+      ));
     }
 
     /**
@@ -45,8 +49,11 @@ class RecettesController extends Controller
         ]);
 
         $recette = new Recipe($request->all());
+        $recette['author_id'] = 1;
+        $recette['date']=now();
         $recette->save();
-        
+
+        return redirect(route('recettes.index'));
     }
 
     /**
