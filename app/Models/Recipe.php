@@ -7,7 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Recipe extends Model
 {
+<<<<<<< HEAD
     protected $table = 'recipes';
+=======
+    protected $table = 'contact';
+>>>>>>> 3bd36676d9e511560b551312eba4546b0c1226b6
     public $timestamps = false;
 
     public $fillable = ['title', 'content', 'ingredients', 'url', 'tags', 'status'];
