@@ -6,7 +6,6 @@
 
       <a href="/"></a>
 
-<<<<<<< HEAD
       <body>
       <div class="container-lg">
           <div class="table-responsive">
@@ -65,7 +64,4 @@
           </div>
       </div>
       </body>
-=======
-      <a class="btn" href="{{ route('recettes.create') }}" title="Ajouter une recette"> <i class="fas fa-plus-circle"></i> Ajout </a>
->>>>>>> 3bd36676d9e511560b551312eba4546b0c1226b6
       @endsection
