@@ -18,7 +18,7 @@
       <ul class="menu">
         <li class="menu-text">Cooking</li>
         <li><a href="/">Home</a></li>
-        <li><a href="/recettes">Recettes</a></li>
+        <li><a href="/admin/recettes">Recettes</a></li>
         <li><a href="/contact">Contact</a></li>
       </ul>
     </div>

@@ -22,7 +22,7 @@
           </div>
           <div>
               <label for="message">Message :</label>
-              <textarea id="message" name="message"></textarea>
+              <textarea class="h-100 d-inline-block" id="message" name="message"></textarea>
               @if ($errors->first('message'))
                   <div class="alert alert-danger">{{ $errors->first('message') }}</div>
               @endif
