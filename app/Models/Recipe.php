@@ -7,6 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Recipe extends Model
 {
+    protected $table = 'recipes';
+    public $timestamps = false;
+
+    public $fillable = ['title', 'content', 'ingredients', 'url', 'tags', 'status'];
+
+
     use HasFactory;
 
     /**
@@ -28,7 +34,6 @@ class Recipe extends Model
                 ->count(1)
                 ->create();
     }
-    public $timestamps = false;
 
 
     // $recipe = \App\Models\Recipe::find(1); //trouver la recette avec l’id 1
