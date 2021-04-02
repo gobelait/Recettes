@@ -35,9 +35,14 @@
                               <td>{{$recipe->date}}</td>
                               <td> {{$recipe->status }} </td>
                               <td>
-                                  <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
                                   <a class="edit" href="recettes/{{$recipe->id}}/edit " title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                                  <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                                  <!-- <a class="delete" href="recettes/destroy/{{$recipe->id}}" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a> -->
+                                  <form action="{{ route('recettes.destroy',$recipe->id) }}" method="POST">
+                                  {{ method_field('DELETE') }}
+                                  @csrf
+                                  <input type="hidden" name="_method" value="DELETE">
+                                      <button type="submit" class="btn btn-danger">Delete</button>
+                                  </form>
                               </td>
                           </tr>
                           @endforeach
