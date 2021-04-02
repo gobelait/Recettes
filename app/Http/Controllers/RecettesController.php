@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Recipe;
-use Illuminate\Http\Request;
+use Request;
 
 class RecettesController extends Controller
 {
@@ -73,9 +73,14 @@ class RecettesController extends Controller
      * @param  \App\Models\Recipe  $recipe
      * @return \Illuminate\Http\Response
      */
-    public function edit(Recipe $recipe)
+    public function edit()
     {
-        //
+        if($idRecipe = Request::segment(3) != null){
+            $recipe = \App\Models\Recipe::where('id',$idRecipe)->first();
+            return view('recipesEdit',array(
+                'recipe' => $recipe
+            ));
+        }
     }
 
     /**

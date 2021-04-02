@@ -28,7 +28,7 @@ Route::get('/recettes/{url}',[RecipesController::class, 'show']);
 use App\Http\Controllers\RecettesController;
 Route::resource('/admin/recettes', RecettesController::class);
 Route::get('/admin/recettes.delete/{url}', [RecettesController::class, 'delete']);
-
+Route::get('/admin/recettes/{url}/edit', [RecettesController::class, 'edit']);
 
 Route::resource('/admin/recettes', RecettesController::class);
 
