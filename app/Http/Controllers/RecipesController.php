@@ -22,7 +22,7 @@ class RecipesController extends Controller
 
    $author = $this->getUserById($recipe->author_id);
 
-   return view('recipeDetails')
+   return view('recipesShow')
             ->with('recipe', $recipe)
             ->with('author', $author);
 }

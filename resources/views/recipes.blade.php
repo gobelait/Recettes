@@ -39,7 +39,7 @@
                         @foreach ( $recipes as $recipe )
 
                           <tr>
-                              <td> <a href="#"> {{ $recipe->title }} </a> </td>
+                              <td> {{ $recipe->title }} </a> </td>
                               <td>{{$recipe->date}}</td>
                               <td> {{$recipe->status }} </td>
                               <td>
@@ -47,7 +47,7 @@
                                   <a class="edit" href="recettes/{{$recipe->id}}/edit " title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
 
                                 <!-- Bouton des vues détaillées d'une recette  -->
-                                  <a class="show" href="recettes/{{$recipe->id}}/show" title="Show"><i class="material-icons">remove_red_eye</i></a>
+                                  <a class="show" href="{{ route('recettes.show',$recipe->id) }}" title="Show"><i class="material-icons">remove_red_eye</i></a>
 
                                 <!-- Bouton de suppresion d'une recette  -->
                                   <form action="{{ route('recettes.destroy',$recipe->id) }}" method="POST">

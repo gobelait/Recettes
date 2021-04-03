@@ -4,6 +4,13 @@
       @section('content')
       <h1>Contact</h1>
 
+      @if(\Session::has('success'))
+            <div class="alert alert-success">
+              <h4>{{ \Session::get('success') }}</h4>
+            </div>
+            <hr>
+      @endif
+
       <form action="/contact" method="post">
           @csrf
           <div>
@@ -33,5 +40,3 @@
       </form>
 
       @endsection
-
-
