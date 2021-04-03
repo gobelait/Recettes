@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Request;
+use Illuminate\Http\Request;
 
 class RecipesController extends Controller
 {
-  function index() {
+  function index(Request $request) {
 
 
-      if($titleRecipe = Request::segment(2) != null){
+      if($titleRecipe = $request->segment(2) != null){
       $recipe = show($titleRecipe);
 
     }else{

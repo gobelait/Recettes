@@ -43,6 +43,7 @@
                               <td>{{$recipe->date}}</td>
                               <td> {{$recipe->status }} </td>
                               <td>
+
                                 <!-- Bouton de modification d'une recette  -->
                                   <a class="edit" href="recettes/{{$recipe->id}}/edit " title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
 

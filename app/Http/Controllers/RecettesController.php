@@ -1,9 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Http\Request;
 use App\Models\Recipe;
-use Request;
 
 class RecettesController extends Controller
 {
@@ -34,7 +33,7 @@ class RecettesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -62,10 +61,10 @@ class RecettesController extends Controller
      * @param  \App\Models\Recipe  $recipe
      * @return \Illuminate\Http\Response
      */
-    public function show(Recipe $recipe)
+    public function show(Recipe $recipe, Request $request)
     {
 
-      $idRecipe = Request::segment(3); //recupere l'id
+      $idRecipe = $request->segment(3); //recupere l'id
       $recipe = Recipe::where('id',$idRecipe)->first();
 
       $author = $this->getUserById($recipe->author_id);
@@ -86,9 +85,9 @@ class RecettesController extends Controller
      * @param  \App\Models\Recipe  $recipe
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit(Request $request)
     {
-        if($idRecipe = Request::segment(3) != null){
+        if($idRecipe = $request->segment(3) != null){
             $recipe = \App\Models\Recipe::where('id',$idRecipe)->first();
             return view('recipesEdit',array(
                 'recipe' => $recipe
@@ -114,9 +113,9 @@ class RecettesController extends Controller
      * @param  \App\Models\Recipe  $recipe
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Recipe $recipe)
+    public function destroy(Recipe $recipe, Request $request)
     {
-            $idRecipe = Request::segment(3); //recupere l'id
+            $idRecipe = $request->segment(3); //recupere l'id
             $recipe = Recipe::where('id',$idRecipe)->first();
             $message = "{$recipe->title} a bien été supprimer.";
             $recipe->delete();
