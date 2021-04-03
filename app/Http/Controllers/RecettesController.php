@@ -64,7 +64,20 @@ class RecettesController extends Controller
      */
     public function show(Recipe $recipe)
     {
-        //
+
+      $idRecipe = Request::segment(3); //recupere l'id
+      $recipe = Recipe::where('id',$idRecipe)->first();
+
+      $author = $this->getUserById($recipe->author_id);
+
+      return view('recipeDetails')
+               ->with('recipe', $recipe)
+               ->with('author', $author);
+    }
+
+    public function getUserById($id){
+        $user =  \App\Models\User::where('id',$id)->first();
+        return $user;
     }
 
     /**
@@ -103,8 +116,11 @@ class RecettesController extends Controller
      */
     public function destroy(Recipe $recipe)
     {
+            $idRecipe = Request::segment(3); //recupere l'id
+            $recipe = Recipe::where('id',$idRecipe)->first();
+            $message = "{$recipe->title} a bien été supprimer.";
             $recipe->delete();
-            return redirect(route('recettes.index'));
+            return redirect(route('recettes.index'))->with('success',$message);
 
     }
 }

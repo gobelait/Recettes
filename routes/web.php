@@ -27,10 +27,10 @@ Route::get('/recettes/{url}',[RecipesController::class, 'show']);
 //Controlleurs pour le CRUD des recettes
 use App\Http\Controllers\RecettesController;
 Route::resource('/admin/recettes', RecettesController::class);
-// Route::delete('admin/recettes/{url}','RecettesController@destroy')->name('recettes.destroy');
-Route::get('/admin/recettes/destroy/{id}', [RecettesController::class, 'destroy']);
-
+Route::get('/admin/recettes/destroy/{url}', [RecettesController::class, 'destroy']);
 Route::get('/admin/recettes/{url}/edit', [RecettesController::class, 'edit']);
+Route::get('/admin/recettes/{url}/show', [RecettesController::class, 'show']);
+
 
 Route::resource('/admin/recettes', RecettesController::class);
 

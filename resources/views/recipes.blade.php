@@ -6,6 +6,14 @@
 
       <a href="/"></a>
 
+
+@if(\Session::has('success'))
+      <div class="alert alert-danger">
+        <h4>{{ \Session::get('success') }}</h4>
+      </div>
+      <hr>
+@endif
+
       <body>
       <div class="container-lg">
           <div class="table-responsive">
@@ -35,13 +43,23 @@
                               <td>{{$recipe->date}}</td>
                               <td> {{$recipe->status }} </td>
                               <td>
+                                <!-- Bouton de modification d'une recette  -->
                                   <a class="edit" href="recettes/{{$recipe->id}}/edit " title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                                  <!-- <a class="delete" href="recettes/destroy/{{$recipe->id}}" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a> -->
+
+                                <!-- Bouton des vues détaillées d'une recette  -->
+                                  <a class="show" href="recettes/{{$recipe->id}}/show" title="Show"><i class="material-icons">remove_red_eye</i></a>
+
+                                <!-- Bouton de suppresion d'une recette  -->
                                   <form action="{{ route('recettes.destroy',$recipe->id) }}" method="POST">
                                   {{ method_field('DELETE') }}
                                   @csrf
                                   <input type="hidden" name="_method" value="DELETE">
-                                      <button type="submit" class="btn btn-danger">Delete</button>
+
+                                      <button type="submit" >
+                                        <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i> </a>
+                                      </button>
+
+
                                   </form>
                               </td>
                           </tr>
