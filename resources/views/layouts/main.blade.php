@@ -27,6 +27,17 @@
         <li><a href="/contact">Contact</a></li>
       </ul>
     </div>
+
+    <div class="top-bar-right">
+      <ul class="menu">
+        <li><a href="/">Login:</a></li>
+        <li> <input class="form-control input-sm" type="text" name="" value=""> </li>
+        <li> <a href="#"> Mot de passe: </a> </li>
+        <li> <input class="form-control input-sm" type="text" name="" value=""> </li>
+        
+      </ul>
+    </div>
+
   </div>
   <!-- End Top Bar -->
 
