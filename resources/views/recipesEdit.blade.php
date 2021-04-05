@@ -2,12 +2,14 @@
 
 @section('content')
 
+<a href="{{ route('recettes.index') }}">Retour aux recettes.</a>
+<br>
 <h1>Modification de {{ $recipe->title }}</h1>
-<p>Modifiez les champs que vous souhaitez et sauvegardez les modifications</p>
+<p class="lead">Modifiez les champs que vous souhaitez et sauvegardez les modifications.</p>
 
 {!! Form::model($recipe, [
     'method' => 'PATCH',
-    'route' => ['recettes.update', $recipe]
+    'route' => ['recettes.update', $recipe->id]
 ]) !!}
 
 <div class="form-group">

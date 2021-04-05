@@ -85,14 +85,13 @@ class RecettesController extends Controller
      * @param  \App\Models\Recipe  $recipe
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request)
+    public function edit(Recipe $recipe, Request $request)
     {
-        if($idRecipe = $request->segment(3) != null){
-            $recipe = \App\Models\Recipe::where('id',$idRecipe)->first();
-            return view('recipesEdit',array(
-                'recipe' => $recipe
-            ));
-        }
+        $idRecipe = $request->segment(3);
+        $recipe = Recipe::where('id',$idRecipe)->first();
+        return view('recipesEdit',array(
+            'recipe' => $recipe
+        ));
     }
 
     /**
@@ -102,9 +101,21 @@ class RecettesController extends Controller
      * @param  \App\Models\Recipe  $recipe
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Recipe $recipe)
-    {
-        //
+    public function update($idRecipe, Request $request)
+    {   
+        $recipe = Recipe::findOrFail($idRecipe);
+        $this->validate($request, [
+            'title' => 'required|max:255',
+            'content' => 'required',
+            'ingredients' => 'required',
+            'url' => 'required|max:200',
+            'tags' =>'nullable',
+            'status' => 'required|max:45'
+        ]);
+
+        $input = $request->all();
+        $recipe->fill($input)->save();
+        return redirect(route('recettes.index'));
     }
 
     /**
