@@ -34,7 +34,7 @@
         <li> <input class="form-control input-sm" type="text" name="" value=""> </li>
         <li> <a href="#"> Mot de passe: </a> </li>
         <li> <input class="form-control input-sm" type="text" name="" value=""> </li>
-        
+        <li> <button type="button" class="btn btn-primary">Login</button> </li>
       </ul>
     </div>
 
