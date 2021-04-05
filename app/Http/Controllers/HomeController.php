@@ -6,14 +6,17 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-   function index() {
-       // return view('welcome');
-       $recipes = \App\Models\Recipe::latest()->take(3)->get();
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+     function index() {
+         // return view('welcome');
+         $recipes = \App\Models\Recipe::latest()->take(3)->get();
 
-       return view('welcome',array(
-           'recipes' => $recipes
-       ));
-   }
-
-
+         return view('welcome',array(
+             'recipes' => $recipes
+         ));
+     }
 }

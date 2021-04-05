@@ -38,3 +38,8 @@ Route::resource('/admin/recettes', RecettesController::class);
 use App\Http\Controllers\ContactController;
 Route::get('/contact', [ContactController::class, 'index']);
 Route::post('/contact', [ContactController::class, 'store']); //VU A FAIRE
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
