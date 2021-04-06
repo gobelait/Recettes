@@ -61,4 +61,7 @@ class User extends Authenticatable
         return $this->hasMany(Recipe::class,'author_id');
     }
 
+    public function isAdmin() {
+      return $this->is_admin;
+    }
 }

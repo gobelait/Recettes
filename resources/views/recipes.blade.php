@@ -21,9 +21,13 @@
                   <div class="table-title">
                       <div class="row">
                           <div class="col-sm-8"><h2>Liste des <b>recettes</b></h2></div>
+                          <!-- Verifie si on est connecter et si on est administrateur  -->
+                          @if(Auth::check() && Auth::user()->isAdmin())
                           <div class="col-sm-4">
                               <a type="button" href="{{ route('recettes.create') }}"  class="btn btn-info add-new" ><i class="fa fa-plus"></i> Add New</a>
                           </div>
+                          @endif
+
                       </div>
                   </div>
                   <table class="table table-bordered">
@@ -44,12 +48,15 @@
                               <td> {{$recipe->status }} </td>
                               <td>
 
-                                <!-- Bouton de modification d'une recette  -->
-                                  <a class="edit" href="recettes/{{$recipe->id}}/edit " title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-
                                 <!-- Bouton des vues détaillées d'une recette  -->
-                                  <a class="show" href="{{ route('recettes.show',$recipe->id) }}" title="Show"><i class="material-icons">remove_red_eye</i></a>
+                                <a class="show" href="{{ route('recettes.show',$recipe->id) }}" title="Show"><i class="material-icons">remove_red_eye</i></a>
 
+                                <!-- Bouton de modification d'une recette  -->
+
+
+                                <!-- Verifie si on est connecter et si on est administrateur -->
+                                @if(Auth::check() && Auth::user()->isAdmin())
+                                <a class="edit" href="recettes/{{$recipe->id}}/edit " title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
                                 <!-- Bouton de suppresion d'une recette  -->
                                   <form action="{{ route('recettes.destroy',$recipe->id) }}" method="POST">
                                   {{ method_field('DELETE') }}
@@ -59,9 +66,9 @@
                                       <button type="submit" >
                                         <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i> </a>
                                       </button>
-
-
                                   </form>
+
+                                @endif
                               </td>
                           </tr>
                           @endforeach
