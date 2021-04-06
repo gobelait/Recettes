@@ -23,6 +23,7 @@ class CreateRecipesTable extends Migration
             $table->text('tags');
             $table->dateTime('date');
             $table->string('status', 45);
+            // $table->string('image');
 
             $table->foreign('author_id')->references('id')->on('users');
         });
@@ -35,6 +36,6 @@ class CreateRecipesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('recipes');
     }
 }
