@@ -24,6 +24,7 @@ Route::get('/', [HomeController::class, 'index']);
 use App\Http\Controllers\RecipesController;
 Route::get('/recettes/{url}',[RecipesController::class, 'show']);
 
+Route::post('/admin/recettes/{url}', [RecipesController::class, 'save_comment'])->name('save-comment');
 //Controlleurs pour le CRUD des recettes
 use App\Http\Controllers\RecettesController;
 Route::resource('/admin/recettes', RecettesController::class);
