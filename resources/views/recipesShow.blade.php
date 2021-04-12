@@ -13,16 +13,20 @@
             <h5 class="card-header">Commentaires <span class="comment-count float-right badge badge-info">{{ count($recipe->comments) }}</span></h5>
             <div class="card-body">
                 {{-- Add Comment --}}
-                <div class="add-comment mb-3">
-                    @csrf
-                    <textarea class="form-control comment" placeholder="Enter Comment"></textarea>
-                    <button data-recipe="{{ $recipe->id }}" class="btn btn-dark btn-sm mt-2 save-comment">Submit</button>
-                </div>
+                @if(Auth::check())
+                    <div class="add-comment mb-3">
+                        @csrf
+                        <textarea class="form-control comment" placeholder="Enter Comment"></textarea>
+                        <button data-recipe="{{ $recipe->id }}" class="btn btn-dark btn-sm mt-2 save-comment">Submit</button>
+                    </div>
+                @endif
                 <hr/>
                 {{-- List Start --}}
                 <div class="comments"> 
                     @if(count($recipe->comments)>0)
                         @foreach($recipe->comments as $comment)
+                            <h5> {{ $comment->author->name }}  </h5>
+                            <p> Le : {{ $comment->date }}</p>
                             <blockquote class="blockquote">
                               <small class="mb-0">{{ $comment->content }}</small>
                             </blockquote>
