@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 
 class RecipesController extends Controller
 {
@@ -31,7 +32,7 @@ class RecipesController extends Controller
   function save_comment(Request $request){
     $data=new \App\Models\Comment;
     $data->recipe_id=$request->segment(3);
-    $data->author_id = 1; // en attendant d'avoir les users connectés
+    $data->author_id = Auth::user()->id  ; 
     $data->content=$request->comment;
     $data->date= date("Y-m-d H:i:s");
     $data->save();
