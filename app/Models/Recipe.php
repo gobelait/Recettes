@@ -10,7 +10,7 @@ class Recipe extends Model
     protected $table = 'recipes';
     public $timestamps = false;
 
-    public $fillable = ['title', 'content', 'ingredients', 'url', 'tags', 'status'];
+    public $fillable = ['title', 'content', 'ingredients', 'url', 'tags', 'status','image'];
 
 
     use HasFactory;

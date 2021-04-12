@@ -23,7 +23,7 @@ class CreateRecipesTable extends Migration
             $table->text('tags');
             $table->dateTime('date');
             $table->string('status', 45);
-            // $table->string('image');
+            $table->string('image');
 
             $table->foreign('author_id')->references('id')->on('users');
         });
