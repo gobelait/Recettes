@@ -72,7 +72,6 @@
       </ul>
     </div>
   </div>
-  <br>
   <!-- End Top Bar -->
 
   <div class="callout large primary">
