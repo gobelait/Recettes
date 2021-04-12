@@ -23,6 +23,13 @@ class Recipe extends Model
         return $this->belongsTo(User::class,'author_id');
     }
 
+        /**
+     * Get the comments for the blog recipe.
+     */
+    public function comments() {
+        return $this->hasMany(Comment::class);
+      }
+
     /**
      * Run the database seeders.
      *
