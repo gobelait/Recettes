@@ -40,6 +40,7 @@ class RecipesController extends Controller
     ]);
   }
 
+  // Recupere l'utilisateur
   public function getUserById($id){
       $user =  \App\Models\User::where('id',$id)->first();
       return $user;
