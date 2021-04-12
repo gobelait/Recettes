@@ -32,7 +32,7 @@ class RecipeFactory extends Factory
             'tags' => $this->faker->text,
             'date' => now(),
             'status' => $this->faker->text(45),
-            'image' => '/public/images/tacos.jpg'
+            'image' => 'images/default.png'
         ];
     }
 

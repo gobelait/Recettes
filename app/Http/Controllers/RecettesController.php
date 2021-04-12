@@ -52,21 +52,13 @@ class RecettesController extends Controller
         ]);
 
         if ($files = $request->file('image')) {
-            $destinationPath = public_path('/images'); // upload path
+            $destinationPath = public_path('/images'); //chemin d'upload
             $profileImage = date('YmdHis') . "." . $files->getClientOriginalExtension();
             $files->move($destinationPath, $profileImage);
-            $insert['image'] = "$profileImage";
          }
 
-      //   if ($request->hasFile('image')) {
-      //     $image = $request->file('image');
-      //     $filename = time() . '.' . $image->getClientOriginalExtension();
-      //     $path = public_path('/images') . $filename;
-      //     Image::make($image->getRealPath())->resize(300, 300)->save($path);
-      //     $request->replace(['image' => $path]);
-      // }
-
         $recette = new Recipe($request->all());
+        $recette['image'] = "images/".$profileImage;
         $recette['author_id'] = 1;
         $recette['date']=now();
         $recette->save();

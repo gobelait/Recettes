@@ -44,7 +44,7 @@
 
                           <tr>
                               <td> {{ $recipe->title }} </a> </td>
-                              <td>{{$recipe->date}}</td>
+                              <td>{{$recipe->author->name}}</td>
                               <td> {{$recipe->status }} </td>
                               <td>
 
