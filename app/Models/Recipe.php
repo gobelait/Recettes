@@ -10,7 +10,7 @@ class Recipe extends Model
     protected $table = 'recipes';
     public $timestamps = false;
 
-    public $fillable = ['title', 'content', 'ingredients', 'url', 'tags', 'status'];
+    public $fillable = ['title', 'content', 'ingredients', 'url', 'tags', 'status','image'];
 
 
     use HasFactory;
@@ -22,6 +22,13 @@ class Recipe extends Model
     {
         return $this->belongsTo(User::class,'author_id');
     }
+
+        /**
+     * Get the comments for the blog recipe.
+     */
+    public function comments() {
+        return $this->hasMany(Comment::class);
+      }
 
     /**
      * Run the database seeders.

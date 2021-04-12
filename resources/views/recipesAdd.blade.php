@@ -20,7 +20,7 @@
             </ul>
         </div>
     @endif
-    <form action="{{ route('recettes.store') }}" method="POST" >
+    <form action="{{ route('recettes.store') }}" method="POST" enctype="multipart/form-data" accept-charset="utf-8" class="uploader">
         @csrf
 
         <div class="row">
@@ -61,6 +61,31 @@
                     <input type="text" name="status" class="form-control" placeholder="Difficulté">
                 </div>
             </div>
+
+
+
+            <h2>File Upload & Image Preview</h2>
+                <p class="lead">No Plugins <b>Just Javascript</b></p>
+                <!-- Upload  -->
+                <form id="file-upload-form">
+                    @csrf
+                    <input id="file-upload" type="file" name="image" accept="image/*" onchange="readURL(this);">
+                    <label for="file-upload" id="file-drag">
+                        <img id="file-image" src="#" alt="Preview" class="hidden">
+                        <div id="start" >
+                            <i class="fa fa-download" aria-hidden="true"></i>
+                            <div>Select a file or drag here</div>
+                            <div id="notimage" class="hidden">Please select an image</div>
+                            <span id="file-upload-btn" class="btn btn-primary">Select a file</span>
+                            <br>
+                            <span class="text-danger">{{ $errors->first('fileUpload') }}</span>
+                        </div>
+                    </label>
+                </form>
+
+
+
+
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
@@ -68,5 +93,21 @@
 
     </form>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    </div>
+    <script>
+    function readURL(input, id) {
+    id = id || '#file-image';
+    if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+    $(id).attr('src', e.target.result);
+    };
+    reader.readAsDataURL(input.files[0]);
+    $('#file-image').removeClass('hidden');
+    $('#start').hide();
+    }
+    }
+    </script>
 
 @endsection

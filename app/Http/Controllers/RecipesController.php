@@ -25,11 +25,25 @@ class RecipesController extends Controller
    return view('recipesShow')
             ->with('recipe', $recipe)
             ->with('author', $author);
-}
+  }
 
-public function getUserById($id){
-    $user =  \App\Models\User::where('id',$id)->first();
-    return $user;
-}
+  // Save Comment
+  function save_comment(Request $request){
+    $data=new \App\Models\Comment;
+    $data->recipe_id=$request->segment(3);
+    $data->author_id = 1; // en attendant d'avoir les users connectés
+    $data->content=$request->comment;
+    $data->date= date("Y-m-d H:i:s");
+    $data->save();
+    return response()->json([
+        'bool'=>true
+    ]);
+  }
+
+  // Recupere l'utilisateur
+  public function getUserById($id){
+      $user =  \App\Models\User::where('id',$id)->first();
+      return $user;
+  }
 
 }

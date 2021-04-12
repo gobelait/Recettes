@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Recipe;
 
+use Validator,Redirect,Response,File;
+use Intervention\Image\Facades\Image;
+
 class RecettesController extends Controller
 {
     /**
@@ -44,8 +47,24 @@ class RecettesController extends Controller
             'ingredients' => 'required',
             'url' => 'required|max:200',
             'tags' =>'nullable',
-            'status' => 'required|max:45'
+            'status' => 'required|max:45',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
+
+        if ($files = $request->file('image')) {
+            $destinationPath = public_path('/images'); // upload path
+            $profileImage = date('YmdHis') . "." . $files->getClientOriginalExtension();
+            $files->move($destinationPath, $profileImage);
+            $insert['image'] = "$profileImage";
+         }
+
+      //   if ($request->hasFile('image')) {
+      //     $image = $request->file('image');
+      //     $filename = time() . '.' . $image->getClientOriginalExtension();
+      //     $path = public_path('/images') . $filename;
+      //     Image::make($image->getRealPath())->resize(300, 300)->save($path);
+      //     $request->replace(['image' => $path]);
+      // }
 
         $recette = new Recipe($request->all());
         $recette['author_id'] = 1;
@@ -102,7 +121,7 @@ class RecettesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update($idRecipe, Request $request)
-    {   
+    {
         $recipe = Recipe::findOrFail($idRecipe);
         $this->validate($request, [
             'title' => 'required|max:255',
