@@ -14,6 +14,7 @@
       <hr>
 @endif
 
+<!-- feedback pour l'ajout d'une recette  -->
 @if(\Session::has('successAdd'))
       <div class="alert alert-success">
         <h4>{{ \Session::get('successAdd') }}</h4>
@@ -31,7 +32,7 @@
                   <div class="table-title">
                       <div class="row">
                           <div class="col-sm-8"><h2>Liste des <b>recettes</b></h2></div>
-                          <!-- Verifie si on est connecter et si on est administrateur  -->
+                          <!-- Verifie si un user est connecter  -->
                           @if(Auth::check())
                           <!-- && Auth::user()->isAdmin() -->
                           <div class="col-sm-4">
@@ -65,8 +66,8 @@
                                 <!-- Bouton de modification d'une recette  -->
 
 
-                                <!-- Verifie si on est connecter et si on est administrateur -->
-                                @if(Auth::check() && Auth::user()->isAdmin())
+                                <!-- Verifie si on est connecter et si on est administrateur ou si on est simplement le propriétaire de la recette pour avoir les droits sur la recette-->
+                                @if(Auth::check() && Auth::user()->isAdmin() || Auth::user()->id === $recipe->author->id)
                                 <a class="edit" href="recettes/{{$recipe->id}}/edit " title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
                                 <!-- Bouton de suppresion d'une recette  -->
                                   <form action="{{ route('recettes.destroy',$recipe->id) }}" method="POST">
@@ -78,7 +79,6 @@
                                         <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i> </a>
                                       </button>
                                   </form>
-
                                 @endif
                               </td>
                           </tr>

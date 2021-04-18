@@ -19,7 +19,7 @@ class RecipesController extends Controller
   }
 
   public function show($recipe_name) {
-   $recipe = \App\Models\Recipe::where('title',$recipe_name)->first(); //get first recipe with recipe_nam == $recipe_name
+   $recipe = \App\Models\Recipe::where('title',$recipe_name)->first(); //recupere une recette en fonction de son titre
 
    $author = $this->getUserById($recipe->author_id);
 
@@ -32,7 +32,7 @@ class RecipesController extends Controller
   function save_comment(Request $request){
     $data=new \App\Models\Comment;
     $data->recipe_id=$request->segment(3);
-    $data->author_id = Auth::user()->id  ; 
+    $data->author_id = Auth::user()->id  ;
     $data->content=$request->comment;
     $data->date= date("Y-m-d H:i:s");
     $data->save();
@@ -41,7 +41,7 @@ class RecipesController extends Controller
     ]);
   }
 
-  // Recupere l'utilisateur
+  // Recupere l'objet utilisateur via son id
   public function getUserById($id){
       $user =  \App\Models\User::where('id',$id)->first();
       return $user;

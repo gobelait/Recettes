@@ -90,6 +90,7 @@ class RecettesController extends Controller
                ->with('author', $author);
     }
 
+    //Recupere un utilisateur via son id
     public function getUserById($id){
         $user =  \App\Models\User::where('id',$id)->first();
         return $user;
