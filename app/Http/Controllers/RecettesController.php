@@ -58,12 +58,15 @@ class RecettesController extends Controller
          }
 
         $recette = new Recipe($request->all());
+        $message = "La recette a bien été ajouter.";
         $recette['image'] = "images/".$profileImage;
         $recette['author_id'] = 1;
         $recette['date']=now();
         $recette->save();
 
-        return redirect(route('recettes.index'));
+
+        return redirect(route('recettes.index'))->with('successAdd',$message);
+
     }
 
     /**

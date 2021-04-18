@@ -14,6 +14,16 @@
       <hr>
 @endif
 
+@if(\Session::has('successAdd'))
+      <div class="alert alert-success">
+        <h4>{{ \Session::get('successAdd') }}</h4>
+      </div>
+      <hr>
+@endif
+
+
+
+
       <body>
       <div class="container-lg">
           <div class="table-responsive">
