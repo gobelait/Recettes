@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Recipe;
+use Auth;
+
 
 use Validator,Redirect,Response,File;
 use Intervention\Image\Facades\Image;
@@ -51,19 +53,22 @@ class RecettesController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
-        if ($files = $request->file('image')) {
+        if ($files = $request->file('image')) { //Verifie si il y a bien une image
             $destinationPath = public_path('/images'); //chemin d'upload
-            $profileImage = date('YmdHis') . "." . $files->getClientOriginalExtension();
-            $files->move($destinationPath, $profileImage);
+            $profileImage = date('YmdHis') . "." . $files->getClientOriginalExtension(); //renomme le fichier par la date d'aujourd'hui
+            $files->move($destinationPath, $profileImage); //deplace l'image vers le fichier de sauvegarde des images
          }
 
         $recette = new Recipe($request->all());
+        $message = "La recette a bien été ajouter.";
         $recette['image'] = "images/".$profileImage;
-        $recette['author_id'] = 1;
+        $recette['author_id'] = Auth::user()->id;
         $recette['date']=now();
         $recette->save();
 
-        return redirect(route('recettes.index'));
+
+        return redirect(route('recettes.index'))->with('successAdd',$message);
+
     }
 
     /**
@@ -85,6 +90,7 @@ class RecettesController extends Controller
                ->with('author', $author);
     }
 
+    //Recupere un utilisateur via son id
     public function getUserById($id){
         $user =  \App\Models\User::where('id',$id)->first();
         return $user;

@@ -38,7 +38,7 @@
                 @if(Auth::check())
                     <div class="add-comment mb-3">
                         @csrf
-                        <textarea class="form-control comment" placeholder="Enter Comment"></textarea>
+                        <textarea class="form-control comment" placeholder="Saisissez un commentaire"></textarea>
                         <button data-recipe="{{ $recipe->id }}" class="btn btn-dark btn-sm mt-2 save-comment">Envoyer</button>
                     </div>
                 @endif
