@@ -24,6 +24,8 @@ class CreateRecipesTable extends Migration
             $table->dateTime('date');
             $table->string('status', 45);
             $table->string('image');
+            $table->unsignedBigInteger('like')->default(0);
+            $table->unsignedBigInteger('dislike')->default(0);
 
             $table->foreign('author_id')->references('id')->on('users');
         });

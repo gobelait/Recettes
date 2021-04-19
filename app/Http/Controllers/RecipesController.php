@@ -41,6 +41,46 @@ class RecipesController extends Controller
     ]);
   }
 
+  //funtions pour likes
+  public function getlike(Request $request)
+  {
+      $recipe = Recipe::find($request->recipe);
+      return response()->json([
+          'recipe'=>$recipe,
+      ]);
+  }
+
+  public function like(Request $request)
+  {
+      $recipe = Recipe::find($request->recipe);
+      $value = $recipe->like;
+      $recipe->like = $value+1;
+      $recipe->save();
+      return response()->json([
+          'message'=>'Thanks',
+      ]);
+  }    
+
+  //funtions pour dislikes
+  public function getDislike(Request $request)
+  {
+      $recipe = Recipe::find($request->recipe);
+      return response()->json([
+          'recipe'=>$recipe,
+      ]);
+  }
+
+  public function dislike(Request $request)
+  {
+      $recipe = Recipe::find($request->recipe);
+      $value = $recipe->dislike;
+      $recipe->dislike = $value+1;
+      $recipe->save();
+      return response()->json([
+          'message'=>'Thanks',
+      ]);
+  }
+
   // Recupere l'utilisateur
   public function getUserById($id){
       $user =  \App\Models\User::where('id',$id)->first();

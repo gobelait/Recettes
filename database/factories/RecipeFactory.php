@@ -6,6 +6,7 @@ use App\Models\Recipe;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
+use Faker\Generator as Faker;
 
 class RecipeFactory extends Factory
 {
@@ -32,7 +33,7 @@ class RecipeFactory extends Factory
             'tags' => $this->faker->text,
             'date' => now(),
             'status' => $this->faker->text(45),
-            'image' => 'images/default.png'
+            'image' => 'images/default.png',
         ];
     }
 

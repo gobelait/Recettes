@@ -9,11 +9,25 @@
   <div class="column">
     <h1 class="text-center">Recette : {{$recipe->title}}  </h1>
     <h1 class="text-center"> Auteur : {{$author->name}}  </h1
-  </div>
+    </div>
 
 <div class="column text-center">
   <img class="img-thumbnail" style="max-width:50%" src="{{ asset("$recipe->image")}}" alt="{{$recipe->title}}">
 </div>
+
+<div class="card">
+                <div class="card-header">Recipe Detail</div>
+ 
+                <div class="card-body">
+                    <ul>
+                       
+                         <li>{{ $recipe->title }}</li>
+                         <like-component :recipe="{{ $recipe->id }}"></like-component>
+                         <dis-like-component :recipe="{{ $recipe->id }}"></dis-like-component>
+                          
+                    </ul>
+                </div>
+            </div>
 
 <div class="column text-center">
       {{-- Recipe Comments --}}
