@@ -106,9 +106,9 @@ Après s'être connecter l'utilisateur va débloquer un nouvel aspect lors de la
 - Gestion des recettes par l'Administrateur : <br/>
 Le site sépare les utilisateurs en 2 catégories ou rôles différents, les utilisateurs classique et les administrateurs.
 Actuellement le site ne dispose que d'un administrateur par défaut. <br />
-Pour rappel les identifiants de l'administrateur sont: admin@admin.com avec pour mot de passe: adminadmin <br/>
+Pour rappel les identifiants de l'administrateur sont: admin@admin.com avec pour mot de passe: adminadmin . <br/>
 **En tant qu'administrateur celui-ci a accés à toutes les fonctionnalités présenter précédement et cela pour toutes les recettes. 
-Cette à dire consulter, modifier, supprimer, écrire des commentaires sur n'importe quelle recette et même ajouter des recettes.**
+Cette à dire consulter, modifier, supprimer, ajouter des recettes et même écrire des commentaires sur n'importe quelle recette.**
 <p align="center"><img src="https://i.postimg.cc/VsKy2jNJ/Admin-View.png" width="600" title="AdminView"></p> <br/>
 
 - Autres fonctionnalités : <br/>
