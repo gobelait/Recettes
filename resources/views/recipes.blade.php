@@ -31,12 +31,12 @@
       <div class="table-wrapper">
         <div class="table-title">
           <div class="row">
-            <div class="col-sm-8"><h2>Liste des <b>recettes</b></h2></div>
+            <div class="col-sm-8"><h2>Liste des <b>Recettes</b></h2></div>
             <!-- Verifie si un user est connecter  -->
             @if(Auth::check())
             <!-- && Auth::user()->isAdmin() -->
             <div class="col-sm-4">
-              <a type="button" href="{{ route('recettes.create') }}"  class="btn btn-info add-new" ><i class="fa fa-plus"></i> Add New</a>
+              <a type="button" href="{{ route('recettes.create') }}"  class="btn btn-info add-new" ><i class="fa fa-plus"></i> Ajouter une recette</a>
             </div>
             @endif
 
@@ -65,8 +65,9 @@
                 <a class="show" href="{{ route('recettes.show',$recipe->id) }}" title="Show"><i class="material-icons">remove_red_eye</i></a>
 
 
-                <!-- Verifie si on est connecter et si on est administrateur ou si on est simplement le propriétaire de la recette pour avoir les droits sur la recette-->
-                @if(Auth::check() && Auth::user()->isAdmin() || Auth::user()->id === $recipe->author->id)
+                <!-- Verifie si on est connecter puis si on est administrateur ou si on est simplement le propriétaire de la recette pour avoir les droits sur la recette-->
+                @if(Auth::check())
+                  @if(Auth::user()->isAdmin() || Auth::user()->id === $recipe->author->id)
                 <!-- Bouton de modification d'une recette  -->
                 <a class="edit" href="recettes/{{$recipe->id}}/edit " title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
                 <!-- Bouton de suppresion d'une recette  -->
@@ -79,6 +80,7 @@
                     <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i> </a>
                   </button>
                 </form>
+                  @endif
                 @endif
               </td>
             </tr>
