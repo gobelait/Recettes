@@ -49,6 +49,16 @@ class RecipesController extends Controller
 
   }
 
+  // Delete Comment
+  function delete_comment(Request $request){
+    $id_com = $request->segment(4);
+    $commentaire = \App\Models\Comment::where('id', $id_com)->first();
+    if ($commentaire) {
+        $commentaire->delete();
+    }
+    return back();
+   }
+
   //funtions pour likes
   public function getlike(Request $request)
   {
@@ -60,7 +70,7 @@ class RecipesController extends Controller
 
   public function like(Request $request)
   {
-    $recipe = \App\Models\Recipe::where('id',$request->segment(4))->first(); //recupere une recette en fonction de son id
+    $recipe = \App\Models\Recipe::where('id',$request->segment(3))->first(); //recupere une recette en fonction de son id
     $value = $recipe->like;
     $likeExistant = \App\Models\Like::where('author_id', Auth::user()->id)
         ->where('recipe_id', $recipe->id)->first();
@@ -79,11 +89,7 @@ class RecipesController extends Controller
         $recipe->like = $value+1;
     }
     $recipe->save();
-    $author = $this->getUserById($recipe->author_id);
-
-      return view('recipesShow')
-               ->with('recipe', $recipe)
-               ->with('author', $author);
+      return back();
   }    
 
 

@@ -22,14 +22,8 @@ Route::get('/', [HomeController::class, 'index']);
 
 //Controlleur pour le detail d'une recette
 use App\Http\Controllers\RecipesController;
-Route::get('/recettes/{url}',[RecipesController::class, 'show']);
 
-//gestion des commentaires
-Route::post('/admin/recettes/{url}', [RecipesController::class, 'save_comment'])->name('save-comment');
 
-//gestion des likes
-Route::post('like', [RecipesController::class, 'getlike']);
-Route::get('/admin/recettes/like/{id}', [RecipesController::class, 'like']);
  
 
 //Controlleurs pour le CRUD des recettes
@@ -38,6 +32,14 @@ Route::resource('/admin/recettes', RecettesController::class);
 Route::get('/admin/recettes/destroy/{url}', [RecettesController::class, 'destroy']);
 Route::get('/admin/recettes/{url}/edit', [RecettesController::class, 'edit']);
 Route::get('/admin/recettes/{url}/show', [RecettesController::class, 'show']);
+
+//gestion des likes
+Route::post('like', [RecipesController::class, 'getlike']);
+Route::get('/admin/recettes/{id}/like', [RecipesController::class, 'like']);
+
+//gestion des commentaires
+Route::post('/admin/recettes/{url}', [RecipesController::class, 'save_comment'])->name('save-comment');
+Route::get('/admin/recettes/{url}/{id_com}', [RecipesController::class, 'delete_comment'])->name('delete-comment');
 
 
 //Controlleurs pour le formulaire de contact

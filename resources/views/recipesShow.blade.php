@@ -23,8 +23,11 @@
                 <ul>
 
                     <li>{{ $recipe->title }}</li>
-                    <a href="/admin/recettes/like/{{$recipe->id}}">{{$recipe->like}} like</a>
-
+                    @if(Auth::check())
+                     <a href="/admin/recettes/{{$recipe->id}}/like">{{$recipe->like}} like</a>
+                    @else
+                      <p>{{$recipe->like}} like </p>
+                    @endif
 
                 </ul>
             </div>
@@ -49,16 +52,28 @@
                     {{-- List Start --}}
                     <div class="comments">
                         @if(count($recipe->comments)>0)
-                        @foreach($recipe->comments as $comment)
-                        <h5> {{ $comment->author->name }} </h5>
-                        <p> Le : {{ $comment->date }}</p>
-                        <blockquote class="blockquote">
-                            <small class="mb-0">{{ $comment->content }}</small>
-                        </blockquote>
-                        <hr />
-                        @endforeach
+                            @if(Auth::check() and Auth::user()->id == $recipe->author_id)
+                                @foreach($recipe->comments as $comment)
+                                <h5> {{ $comment->author->name }} </h5>
+                                <p> Le : {{ $comment->date }}</p>
+                                <a href="/admin/recettes/{{$recipe->id}}/{{$comment->id}}">X</a>
+                                <blockquote class="blockquote">
+                                    <small class="mb-0">{{ $comment->content }}</small>
+                                </blockquote>
+                                <hr />
+                                @endforeach
+                            @else
+                                 @foreach($recipe->comments as $comment)
+                                <h5> {{ $comment->author->name }} </h5>
+                                <p> Le : {{ $comment->date }}</p>
+                                <blockquote class="blockquote">
+                                    <small class="mb-0">{{ $comment->content }}</small>
+                                </blockquote>
+                                <hr />
+                                @endforeach
+                            @endif
                         @else
-                        <p class="no-comments">Cette recette ne dispose pas encore de commentaire</p>
+                            <p class="no-comments">Cette recette ne dispose pas encore de commentaire</p>
                         @endif
                     </div>
                 </div>
