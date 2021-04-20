@@ -6,7 +6,7 @@
 
 require('./bootstrap');
 
-window.Vue = require('vue').default;
+window.Vue = require('vue');
 
 /**
  * The following block of code may be used to automatically register your
@@ -22,7 +22,6 @@ window.Vue = require('vue').default;
 Vue.component('like-component', require('./components/LikeComponent.vue').default);
  
 Vue.component('dis-like-component', require('./components/DisLikeComponent.vue'));
-
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

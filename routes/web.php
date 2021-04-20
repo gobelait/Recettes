@@ -29,10 +29,8 @@ Route::post('/admin/recettes/{url}', [RecipesController::class, 'save_comment'])
 
 //gestion des likes
 Route::post('like', [RecipesController::class, 'getlike']);
-Route::post('like/{id}', [RecipesController::class, 'like']);
+Route::get('/admin/recettes/like/{id}', [RecipesController::class, 'like']);
  
-Route::post('dislike', [RecipesController::class, 'getDislike']);
-Route::post('dislike/{id}', [RecipesController::class, 'dislike']);
 
 //Controlleurs pour le CRUD des recettes
 use App\Http\Controllers\RecettesController;
