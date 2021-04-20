@@ -17,17 +17,21 @@
         </div>
 
         <div class="card">
-            <div class="card-header">Recipe Detail</div>
+            <div class = "card-header"> 
+                <h5 > Ingrédients :  
+                    @if(Auth::check())
+                     <a class="float-right" href="/admin/recettes/{{$recipe->id}}/like">{{$recipe->like}} like</a>
+                    @else
+                      <p>{{$recipe->like}} like </p>
+                    @endif
+                </h5>
+            </div>
 
             <div class="card-body">
                 <ul>
 
-                    <li>{{ $recipe->title }}</li>
-                    @if(Auth::check())
-                     <a href="/admin/recettes/{{$recipe->id}}/like">{{$recipe->like}} like</a>
-                    @else
-                      <p>{{$recipe->like}} like </p>
-                    @endif
+                    <li>{{ $recipe->ingredients }}</li>
+
 
                 </ul>
             </div>
@@ -35,10 +39,10 @@
 
 
 
-        <div class="column text-center">
+        <div class="column">
             {{-- Recipe Comments --}}
             <div class="card mt-4">
-                <h5 class="card-header">Commentaires <span class="comment-count float-right badge badge-info">{{ count($recipe->comments) }}</span></h5>
+                <h5 class="card-header">Commentaires :  <span class="comment-count float-right badge badge-info">{{ count($recipe->comments) }}</span></h5>
                 <div class="card-body">
                     {{-- Add Comment --}}
                     @if(Auth::check())
@@ -50,17 +54,21 @@
                     @endif
                     <hr />
                     {{-- List Start --}}
-                    <div class="comments">
+                    <div class="comments shadow-sm p-4 mb-4 bg-white ">
                         @if(count($recipe->comments)>0)
                             @if(Auth::check() and Auth::user()->id == $recipe->author_id)
                                 @foreach($recipe->comments as $comment)
-                                <h5> {{ $comment->author->name }} </h5>
-                                <p> Le : {{ $comment->date }}</p>
-                                <a href="/admin/recettes/{{$recipe->id}}/{{$comment->id}}">X</a>
+                                <div> 
+                                    <h5> {{ $comment->author->name }}  <a class="float-right" href="/admin/recettes/{{$recipe->id}}/{{$comment->id}}">Supprimer</a> </h5>   
+                                </div>
+                                
+                                
+                                
                                 <blockquote class="blockquote">
                                     <small class="mb-0">{{ $comment->content }}</small>
                                 </blockquote>
-                                <hr />
+                                <p> Le : {{ $comment->date }}</p>                                  
+
                                 @endforeach
                             @else
                                  @foreach($recipe->comments as $comment)
@@ -69,7 +77,6 @@
                                 <blockquote class="blockquote">
                                     <small class="mb-0">{{ $comment->content }}</small>
                                 </blockquote>
-                                <hr />
                                 @endforeach
                             @endif
                         @else
