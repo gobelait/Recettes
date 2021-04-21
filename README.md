@@ -125,10 +125,12 @@ Cette à dire consulter, modifier, supprimer, ajouter des recettes et même écr
 - Autres fonctionnalités : <br/>
 Une vérification des formulaires est effectuer avant la validation de chaque formulaire afin d'éviter tout bug.
 
-- Difficultés rencontrées : <br/>
-Les premières difficultés que nous avons rencontrées sont dues a des problèmes de compréhension du sujet et du code fournis.
-Nous avons aussi essayé en vain de mettre en place des components Vuejs, malheureusement ce n'à pas abouti et nous nous sommes contraints à des vues classiques.
+## Difficultés rencontrées : <br/>
+Les premières difficultés que nous avons rencontrées sont dues à des problèmes de compréhension du sujet et du code fournis.
+Nous avons aussi essayé en vain de mettre en place des components Vuejs, malheureusement cela n'a pas abouti et nous nous sommes contraints à des vues classiques.
 Hormis ça, les difficultés mineurs sont dues au fait que nous ne connaissions pas ce framework, nous avons donc passé beaucoup de temps à nous documenter sur internet.
+<br/>
+Toutefois, nous avons beacoup appris durant ce projet, il reste donc une bonne experience.
 
 
 
