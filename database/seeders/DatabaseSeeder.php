@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
 
         // Cree 5 faux users
         User::factory(5)->create();
-    
+
 
     // Creation des recettes, likes et commentaires associés
 
@@ -72,10 +72,10 @@ class DatabaseSeeder extends Seeder
       'date' => now(),
       'status' => 'Très facile',
       'image'=>'images\mon-tiramisu.jpg',
-      'like' => 0
+      'like' => 1
     ]);
 
-    
+
     Recipe::create([
       'author_id' => 5,
       'title' => 'Salade César',
@@ -123,9 +123,21 @@ class DatabaseSeeder extends Seeder
       'date' =>now(),
     ]);
 
+    Comment::create([
+      'author_id' => 2,
+      'recipe_id' => 3,
+      'content' => 'Je ne suis pas très affriolant des Tiramisu mais cette image si auréoler devrait intéresser mes congénéres.',
+      'date' =>now(),
+    ]);
+
     Like::create([
       'author_id' => 3,
       'recipe_id' => 5,
+    ]);
+
+    Like::create([
+      'author_id' => 3,
+      'recipe_id' => 3,
     ]);
 
     Like::create([
