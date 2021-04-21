@@ -84,7 +84,7 @@ Il est également possible si l'utilisateur posséde déjà un compte utilisateu
 Après s'être identifier l'utilisateur aura à présent la possiblité d'ajouter des recettes en cliquant sur le bouton "ajouter une recette".
 <p align="center"><img src="https://i.postimg.cc/x8t5B4dd/add-Recette.png" width="600" title="addRecette"></p>
 
-Ce bouton améne l'utilisateur vers le formulaire d'ajout d'une recette dans lequel il pourra saisir les différentes informations de la recette et ajouté une image pour celle-ci, il aura également la possibilité d'avoir une "preview" de l'image avant l'ajout de celle-ci.
+Ce bouton amène l'utilisateur vers le formulaire d'ajout d'une recette dans lequel il pourra saisir les différentes informations de la recette et ajouté une image pour celle-ci, il aura également la possibilité d'avoir une "preview" de l'image avant l'ajout de celle-ci.
 <p align="center"><img src="https://i.postimg.cc/3rVPBtqZ/add-Recette-Form.png" width="600" title="addRecetteForm"></p>
 
 - Modifier et Supprimer : <br/>
@@ -97,10 +97,17 @@ En cliquant sur l'icone de modification l'utilisateur va accéder au formulaire 
 L'utilisateur aura aussi la possibiltié de supprimer sa recette en cliquant sur l'icone de suppression, résultant à la suppresion de sa recette de la base de donnée.
 <p align="center"><img src="https://i.postimg.cc/PqZ5KLX6/delete.png" width="600" title="RecetteDelete"></p> <br/>
 
+- Visualisation du détail d'un recette : <br/>
+L'utilisateur peut visualiser le détail d'une recette en cliquant sur l'oeil dans la liste des recettes (visible sur la capture d'écran précédente). Il sera alors redirigé vers la page suivante.
+<p align="center"><img src="https://i.postimg.cc/MHtNg47C/Screenshot-2021-04-21-Cooking-Welcome-2.png" width="600" title="CommentOnRecette"></p> <br/>
+
+- Liker un post : <br/>
+Un utilisateur connecté a la possibilité de liker une recette. Si il n'est pas connecté, il pourra voir le nombre de likes, mais ne pourra pas ajouter le sien.
+<p align="center"><img src="https://i.postimg.cc/d0129f37/Screenshot-2021-04-21-Cooking-Welcome-3.png" width="600" title="CommentOnRecette"></p> <br/>
+
 - Ecrire des commentaires : <br/>
 Après s'être connecter l'utilisateur va débloquer un nouvel aspect lors de la consultation d'une recette qui est la possibilité d'écrire des commentaires. (Soumission du formulaire en Ajax)
-<p align="center"><img src="https://i.postimg.cc/zDRSY7dv/recette-Consultation-Logged-In.png" width="600" title="RecetteCommentEmpty"></p>
-<p align="center"><img src="https://i.postimg.cc/44LCjJSs/comment-On-Recette.png" width="600" title="CommentOnRecette"></p> <br/>
+<p align="center"><img src="https://i.postimg.cc/xdRDVc3J/Screenshot-2021-04-21-Cooking-Welcome.png" width="600" title="CommentOnRecette"></p> <br/>
 
 
 - Gestion des recettes par l'Administrateur : <br/>
