@@ -107,7 +107,8 @@ Un utilisateur connecté a la possibilité de liker une recette. Si il n'est pas
 <p align="center"><img src="https://i.postimg.cc/d0129f37/Screenshot-2021-04-21-Cooking-Welcome-3.png" width="600" title="CommentOnRecette"></p> <br/>
 
 - Ecrire des commentaires : <br/>
-Après s'être connecté l'utilisateur va débloquer un nouvel aspect lors de la consultation d'une recette qui est la possibilité d'écrire des commentaires. (Soumission du formulaire en Ajax)
+Après s'être connecté l'utilisateur va débloquer un nouvel aspect lors de la consultation d'une recette qui est la possibilité d'écrire des commentaires. (Soumission du formulaire en Ajax).
+De plus, les utilisateurs peuvent supprimer les commentaires des recettes qui leurs appartiennent.
 <p align="center"><img src="https://i.postimg.cc/xdRDVc3J/Screenshot-2021-04-21-Cooking-Welcome.png" width="600" title="CommentOnRecette"></p> <br/>
 
 
