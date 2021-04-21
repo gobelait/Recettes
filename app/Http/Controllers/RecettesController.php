@@ -44,7 +44,7 @@ class RecettesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    { //validation du formulaire
         $request->validate([
             'title' => 'required|max:255',
             'content' => 'required',
@@ -63,12 +63,12 @@ class RecettesController extends Controller
 
         $recette = new Recipe($request->all());
         $message = "La recette a bien été ajouter.";
-        $recette['image'] = "images/".$profileImage;
-        $recette['author_id'] = Auth::user()->id;
+        $recette['image'] = "images/".$profileImage; //Store le chemin vers l'image dans la bd
+        $recette['author_id'] = Auth::user()->id; //set l'author_id avec l'id de l'user connecter
         $recette['date']=now();
         $recette->save();
 
-
+        //renvoie la vue avec un message de feedback
         return redirect(route('recettes.index'))->with('successAdd',$message);
 
     }
@@ -133,7 +133,7 @@ class RecettesController extends Controller
         ]);
 
         $input = $request->all();
-        $recipe->fill($input)->save();
+        $recipe->fill($input)->save(); //rempli les champs de données
         return redirect(route('recettes.index'));
     }
 
@@ -147,21 +147,23 @@ class RecettesController extends Controller
     public function destroy(Recipe $recipe, Request $request)
     {
             $idRecipe = $request->segment(3); //recupere l'id
-            $recipe = Recipe::where('id',$idRecipe)->first();
-            $likes = Like::where('recipe_id', $idRecipe)->get();
+            $recipe = Recipe::where('id',$idRecipe)->first(); //recupere la recette via l'id
+            $likes = Like::where('recipe_id', $idRecipe)->get(); //recupere tout les likes d'une recette
             if ($likes) {
                 foreach ($likes as $like) {
-                    $like->delete();
+                    $like->delete(); //supprime chaque like pour une recette
                 }
             }
-            $comments = Comment::where('recipe_id', $idRecipe)->get();
+            $comments = Comment::where('recipe_id', $idRecipe)->get(); //recupere les commentaires d'une recette
             if ($comments) {
                 foreach ($comments as $comment) {
-                    $comment->delete();
+                    $comment->delete(); //supprime chaque commentaire pour une recette
                 }
             }
             $message = "{$recipe->title} a bien été supprimer.";
             $recipe->delete();
+
+            //Return vers la page d'index avec un message de feedback
             return redirect(route('recettes.index'))->with('success',$message);
 
     }
