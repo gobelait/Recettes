@@ -12,7 +12,7 @@
 - Installation des dépendances npm avec la commande : `npm install`
 
 #### Packages utilisés :
-C'est commandes ne sont pas à effectuer pour l'installation.
+Ces commandes ne sont pas nécessaires pour l'installation.
 - Installer le package [https://github.com/laravel/ui](laravel/ui) avec la commande `composer require laravel/ui --dev`
 - Installer le package [https://laravelcollective.com/docs](laravelcollective/html) avec la commande `composer require laravelcollective/html` 
 - Après l'installation du package précédent, executer cette commande: `php artisan ui bootstrap --auth`
