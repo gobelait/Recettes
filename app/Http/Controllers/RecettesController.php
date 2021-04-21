@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Recipe;
+use App\Models\Like;
+use App\Models\Comment;
 use Auth;
 
 
@@ -135,6 +137,7 @@ class RecettesController extends Controller
         return redirect(route('recettes.index'));
     }
 
+
     /**
      * Remove the specified resource from storage.
      *
@@ -145,6 +148,18 @@ class RecettesController extends Controller
     {
             $idRecipe = $request->segment(3); //recupere l'id
             $recipe = Recipe::where('id',$idRecipe)->first();
+            $likes = Like::where('recipe_id', $idRecipe)->get();
+            if ($likes) {
+                foreach ($likes as $like) {
+                    $like->delete();
+                }
+            }
+            $comments = Comment::where('recipe_id', $idRecipe)->get();
+            if ($comments) {
+                foreach ($comments as $comment) {
+                    $comment->delete();
+                }
+            }
             $message = "{$recipe->title} a bien été supprimer.";
             $recipe->delete();
             return redirect(route('recettes.index'))->with('success',$message);

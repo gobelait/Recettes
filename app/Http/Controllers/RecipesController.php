@@ -24,7 +24,6 @@ class RecipesController extends Controller
 
   public function show($recipe) {
    $author = $this->getUserById($recipe->author_id);
-
    return view('recipesShow')
             ->with('recipe', $recipe)
             ->with('author', $author);
@@ -59,14 +58,8 @@ class RecipesController extends Controller
     return back();
    }
 
-  //funtions pour likes
-  public function getlike(Request $request)
-  {
-      $recipe = Recipe::find($request->recipe);
-      return response()->json([
-          'recipe'=>$recipe,
-      ]);
-  }
+
+
 
   public function like(Request $request)
   {

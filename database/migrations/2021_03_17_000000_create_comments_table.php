@@ -20,8 +20,8 @@ class CreateCommentsTable extends Migration
             $table->mediumText('content');
             $table->dateTime('date');
 
-            $table->foreign('author_id')->references('id')->on('users');
-            $table->foreign('recipe_id')->references('id')->on('recipes');
+            $table->foreign('author_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('recipe_id')->references('id')->on('recipes')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

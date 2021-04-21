@@ -30,6 +30,11 @@ class Recipe extends Model
         return $this->hasMany(Comment::class);
       }
 
+      public function likes()
+      {
+          return $this->hasMany(Like::class);
+      }
+
       // function pour like/dislike ? jsp a quoi ca sert
       public function getRouteKeyName()
       {

@@ -18,13 +18,29 @@
 
         <div class="card">
             <div class = "card-header"> 
-                <h5 > Ingrédients :  
+                <h5 > Description :  
                     @if(Auth::check())
-                     <a class="float-right" href="/admin/recettes/{{$recipe->id}}/like">{{$recipe->like}} like</a>
+                        <a class="float-right" href="/admin/recettes/{{$recipe->id}}/like">{{$recipe->like}} like</a>
                     @else
-                      <p>{{$recipe->like}} like </p>
+                      <p class="float-right">{{$recipe->like}} like </p>
                     @endif
                 </h5>
+            </div>
+
+            <div class="card-body">
+                <ul>
+
+                    <li>{{ $recipe->content }}</li>
+
+
+                </ul>
+            </div>
+        </div>
+        
+
+        <div class="card">
+            <div class = "card-header"> 
+                <h5 > Ingrédients :  </h5>
             </div>
 
             <div class="card-body">
@@ -54,13 +70,12 @@
                     @endif
                     <hr />
                     {{-- List Start --}}
-                    <div class="comments shadow-sm p-4 mb-4 bg-white ">
+                    <div class="comments">
                         @if(count($recipe->comments)>0)
                             @if(Auth::check() and Auth::user()->id == $recipe->author_id)
                                 @foreach($recipe->comments as $comment)
-                                <div> 
+                                <div class="shadow p-4 mb-4 bg-white "> 
                                     <h5> {{ $comment->author->name }}  <a class="float-right" href="/admin/recettes/{{$recipe->id}}/{{$comment->id}}">Supprimer</a> </h5>   
-                                </div>
                                 
                                 
                                 
@@ -68,19 +83,24 @@
                                     <small class="mb-0">{{ $comment->content }}</small>
                                 </blockquote>
                                 <p> Le : {{ $comment->date }}</p>                                  
+                                </div>
 
                                 @endforeach
                             @else
                                  @foreach($recipe->comments as $comment)
+                                 <div class="shadow p-4 mb-4 bg-white "> 
                                 <h5> {{ $comment->author->name }} </h5>
-                                <p> Le : {{ $comment->date }}</p>
                                 <blockquote class="blockquote">
                                     <small class="mb-0">{{ $comment->content }}</small>
                                 </blockquote>
+                                <p> Le : {{ $comment->date }}</p>
+
+                                </div>
+
                                 @endforeach
                             @endif
                         @else
-                            <p class="no-comments">Cette recette ne dispose pas encore de commentaire</p>
+                            <p class="no-comments">Cette recette ne dispose pas encore de commentaire.</p>
                         @endif
                     </div>
                 </div>
