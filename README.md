@@ -10,7 +10,7 @@
 ### 2eme étape: Installation des dépendances et packages nécessaires.
 - Installation des dépendances composer avec la commande : `composer install`
 - Installation des dépendances npm avec la commande : `npm install`
-- 
+
 #### Package utilisé :
 - Installer le package [https://github.com/laravel/ui](laravel/ui) avec la commande `composer require laravel/ui --dev`
 - Installer le package [https://laravelcollective.com/docs](laravelcollective/html) avec la commande `composer require laravelcollective/html` 
@@ -34,7 +34,8 @@ Puis vérifier que dans le fichier *.env* nous avons bien ces informations :
 `DB_CONNECTION=sqlite`\
 `DB_DATABASE=../database/database.db`
 
-Cela va permettre l'utilisation de la base de donnée *database.db*
+Cela va permettre l'utilisation de la base de donnée *database.db* <br />
+<ins>N.B:</ins> Si le fichier **.env** n'existe pas créer celui-ci.
 
 ### 4eme étape: Mise en place de la base de donnée
 
