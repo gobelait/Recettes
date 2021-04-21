@@ -34,7 +34,6 @@
             <div class="col-sm-8"><h2>Liste des <b>Recettes</b></h2></div>
             <!-- Verifie si un user est connecter  -->
             @if(Auth::check())
-            <!-- && Auth::user()->isAdmin() -->
             <div class="col-sm-4">
               <a type="button" href="{{ route('recettes.create') }}"  class="btn btn-info add-new" ><i class="fa fa-plus"></i> Ajouter une recette</a>
             </div>

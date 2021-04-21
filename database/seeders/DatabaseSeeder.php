@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
         User::factory(5)->create();
     
 
-    // Cree une recette par défaut
+    // Creation des recettes, likes et commentaires associés
 
     Recipe::create([
       'author_id' => 2,

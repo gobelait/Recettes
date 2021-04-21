@@ -9,10 +9,10 @@
     </div>
   </div>
 </div>
-
+<!-- Affichage des possibles erreurs -->
 @if ($errors->any())
 <div class="alert alert-danger">
-  <strong>Whoops!</strong> Il y a quelques erreurs dans vos entrez.<br><br>
+  <strong>Whoops!</strong> Il y a quelques erreurs dans vos entrées.<br><br>
   <ul>
     @foreach ($errors->all() as $error)
     <li>{{ $error }}</li>
@@ -20,6 +20,7 @@
   </ul>
 </div>
 @endif
+<!-- Formulaire d'ajout -->
 <form action="{{ route('recettes.store') }}" method="POST" enctype="multipart/form-data" accept-charset="utf-8" class="uploader">
   @csrf
 
@@ -89,6 +90,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 </div>
 <script>
+// Script pour l'ajout des images
 function readURL(input, id) {
   id = id || '#file-image';
   if (input.files && input.files[0]) {

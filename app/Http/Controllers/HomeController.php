@@ -12,8 +12,7 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
      function index() {
-         // return view('welcome');
-         $recipes = \App\Models\Recipe::latest()->take(3)->get();
+         $recipes = \App\Models\Recipe::orderBy('id', 'desc')->take(3)->get();
 
          return view('welcome',array(
              'recipes' => $recipes

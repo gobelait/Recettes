@@ -34,7 +34,6 @@ Route::get('/admin/recettes/{url}/edit', [RecettesController::class, 'edit']);
 Route::get('/admin/recettes/{url}/show', [RecettesController::class, 'show']);
 
 //gestion des likes
-Route::post('like', [RecipesController::class, 'getlike']);
 Route::get('/admin/recettes/{id}/like', [RecipesController::class, 'like']);
 
 //gestion des commentaires
@@ -45,7 +44,7 @@ Route::get('/admin/recettes/{url}/{id_com}', [RecipesController::class, 'delete_
 //Controlleurs pour le formulaire de contact
 use App\Http\Controllers\ContactController;
 Route::get('/contact', [ContactController::class, 'index']);
-Route::post('/contact', [ContactController::class, 'store']); //VU A FAIRE
+Route::post('/contact', [ContactController::class, 'store']);
 
 Auth::routes();
 

@@ -6,7 +6,7 @@
 <br>
 <h1>Modification de {{ $recipe->title }}</h1>
 <p class="lead">Modifiez les champs que vous souhaitez et sauvegardez les modifications.</p>
-
+<!-- formulaire de modification -->
 {!! Form::model($recipe, [
     'method' => 'PATCH',
     'route' => ['recettes.update', $recipe->id]

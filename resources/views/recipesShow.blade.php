@@ -19,7 +19,7 @@
         <div class="card">
             <div class = "card-header"> 
                 <h5 > Description :  
-                    @if(Auth::check())
+                    @if(Auth::check()) <!-- Si connecté => lien, sinon simple text -->
                         <a class="float-right" href="/admin/recettes/{{$recipe->id}}/like">{{$recipe->like}} like</a>
                     @else
                       <p class="float-right">{{$recipe->like}} like </p>
@@ -61,6 +61,7 @@
                 <h5 class="card-header">Commentaires :  <span class="comment-count float-right badge badge-info">{{ count($recipe->comments) }}</span></h5>
                 <div class="card-body">
                     {{-- Add Comment --}}
+                    <!-- Si pas connecté, pas d'ajout de commentaire possible -->
                     @if(Auth::check())
                     <div class="add-comment mb-3">
                         @csrf
@@ -71,14 +72,15 @@
                     <hr />
                     {{-- List Start --}}
                     <div class="comments">
+                    <!-- On affiche les commentaires existants -->
                         @if(count($recipe->comments)>0)
+                        <!-- Si la recette appartient a l'utilisateur connecté, il peut supprimer les commentaires -->
                             @if(Auth::check() and Auth::user()->id == $recipe->author_id)
+                            <!-- Boucle sur les commentaires de la recette -->
                                 @foreach($recipe->comments as $comment)
                                 <div class="shadow p-4 mb-4 bg-white "> 
                                     <h5> {{ $comment->author->name }}  <a class="float-right" href="/admin/recettes/{{$recipe->id}}/{{$comment->id}}">Supprimer</a> </h5>   
-                                
-                                
-                                
+                                                                
                                 <blockquote class="blockquote">
                                     <small class="mb-0">{{ $comment->content }}</small>
                                 </blockquote>
@@ -88,6 +90,7 @@
                                 @endforeach
                             @else
                                  @foreach($recipe->comments as $comment)
+                                 <!-- Boucle sur les commentaires de la recette -->
                                  <div class="shadow p-4 mb-4 bg-white "> 
                                 <h5> {{ $comment->author->name }} </h5>
                                 <blockquote class="blockquote">
@@ -118,7 +121,7 @@
             var vm = $(this);
             // Run Ajax
             $.ajax({
-                url: " /admin/recettes/{{$recipe->id}}",
+                url: " /admin/recettes/{{$recipe->id}}", //routage vers fonction save_comment du controlleur
                 type: "post",
                 dataType: 'json',
                 data: {
@@ -129,7 +132,7 @@
                 beforeSend: function() {
                     vm.text('Envoi...').addClass('disabled');
                 },
-                success: function(res) {
+                success: function(res) { //si le commentaire est bien créé
                     var _html = '<blockquote class="blockquote animate__animated animate__bounce">\
             <small class="mb-0">' + _comment + '</small>\
             </blockquote><hr/>';
@@ -138,7 +141,7 @@
                         $(".comment").val('');
                         $(".comment-count").text($('blockquote').length);
                         $(".no-comments").hide();
-                    } else {
+                    } else { //si l'utilisateur essaie d'envoyer un commentaire vide
                         alert("Veuillez saisir un commentaire avant d'envoyer.")
                     }
                     vm.text('Envoyer').removeClass('disabled');

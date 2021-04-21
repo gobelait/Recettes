@@ -3,7 +3,7 @@
 
       @section('content')
       <h1>Contact</h1>
-
+    <!-- feedback succes -->
       @if(\Session::has('success'))
             <div class="alert alert-success">
               <h4>{{ \Session::get('success') }}</h4>
@@ -11,6 +11,7 @@
             <hr>
       @endif
 
+        <!-- Formulaire de contact -->
       <form action="/contact" method="post">
           @csrf
           <div>
