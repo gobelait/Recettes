@@ -11,13 +11,14 @@
 - Installation des dépendances composer avec la commande : `composer install`
 - Installation des dépendances npm avec la commande : `npm install`
 
-#### Package utilisé :
+#### Packages utilisés :
+C'est commandes ne sont pas à effectuer pour l'installation.
 - Installer le package [https://github.com/laravel/ui](laravel/ui) avec la commande `composer require laravel/ui --dev`
 - Installer le package [https://laravelcollective.com/docs](laravelcollective/html) avec la commande `composer require laravelcollective/html` 
 - Après l'installation du package précédent, executer cette commande: `php artisan ui bootstrap --auth`
 
 ### 3eme étape: Configuration de l'environnement
-Dans *config/app.php* rajouter ces élèments: 
+Dans *config/app.php* rajouter ces éléments si ils n'y sont pas : 
 
 `'providers' => [
 ....
@@ -31,7 +32,7 @@ Cela va permettre l'utilisation de *Form* dans nos vues(.blade).
 
 Puis vérifier que dans le fichier *.env* nous avons bien ces informations : 
 
-`DB_CONNECTION=sqlite`\
+`DB_CONNECTION=sqlite`
 `DB_DATABASE=../database/database.db`
 
 Cela va permettre l'utilisation de la base de donnée *database.db* <br />
@@ -39,34 +40,35 @@ Cela va permettre l'utilisation de la base de donnée *database.db* <br />
 
 ### 4eme étape: Mise en place de la base de donnée
 
-La base de donnée est en principe déjà configuré et prête à être utilisé cependant vous pouvez à tout moment la réinitialiser et la re-populé avec les commandes suivantes: 
+La base de donnée est en principe déjà configurée et prête à être utilisée cependant vous pouvez à tout moment la réinitialiser et la re-populer avec les commandes suivantes: 
 
-`php artisan migrate:fresh` \
-`php artisan db:seed` \
+`php artisan migrate:fresh`
+`php artisan db:seed`
 
-N.B: La population de la base de donnée va permettre la génération d'une vrai recette et d'un compte admin avant le remplissage de celle-ci via de fausse information.
+N.B: La population de la base de donnée va permettre la génération de vraies recettes et d'un compte admin avant le remplissage de celle-ci via de fausses informations.
 
 
 ### 5eme étape: Lancement du serveur et identifiant
 
-Une fois toute les étapes précédentes éffectuer vous pouvez à présent lancer le serveur local avec la commande : `php artisan serve` <br/>
-Il ne vous restera plus qu'a aller sur http://127.0.0.1:8000/ pour visiter le site web. 
+Une fois toute les étapes précédentes effectuées vous pouvez à présent lancer le serveur local avec la commande : `php artisan serve` <br/>
+Il ne vous restera plus qu'à aller sur http://127.0.0.1:8000/ pour visiter le site web. 
 
-Pour vous connectez en tant qu'administrateur il vous suffit de rentré ces identifiants : 
+Pour vous connecter en tant qu'administrateur il vous suffit de rentrer ces identifiants : 
 
 email : admin@admin.com <br/>
 password: adminadmin
 
+Pour vous connecter en utilisateur lambda, vous pouvez créer un utilisateur via le bouton 'register'.
 
 ## Fonctionnalités du site
 
 Le site propose différentes fonctionnalités en fonction de l'utilisateur et de si celui-ci est connecté ou non :
 
 - Consulter des recettes : <br/>
-A l'ouverture du site vous arrivez sur l'accueil de celui-ci dans cette endroit vous aurez la possibilité de consulter les 3 premieres recettes dans la liste des recettes en cliquant sur celle-ci. 
+A l'ouverture du site vous arrivez sur l'accueil de celui-ci dans cette endroit vous aurez la possibilité de consulter les 3 dernières recettes dans la liste des recettes en cliquant sur celle-ci. 
 <p align="center"><img src="https://i.postimg.cc/66RWVxmc/home.png" width="600" title="home"></p>
 
-Vous pouvez aussi sur le header du siteweb cliqué sur "Recettes" afin d'accéder à la liste compléte des recettes que vous pourrez par la suite consulter.
+Vous pouvez aussi sur le header du siteweb cliquer sur "Recettes" afin d'accéder à la liste compléte des recettes que vous pourrez par la suite consulter.
 <p align="center"><img src="https://i.postimg.cc/qv6jqQRN/recette.png" width="600" title="recette"></p>
 
 - Saisir un formulaire de contact : <br/>
@@ -78,14 +80,14 @@ Il est possible pour un utilisateur de s'inscrire pour avoir un comtpe utilisate
 <p align="center"><img src="https://i.postimg.cc/85vbPCPx/register.png" width="600" title="register"></p>
 
 - l'Authentification : <br/>
-Il est également possible si l'utilisateur posséde déjà un compte utilisateur de se connecter directement au site en cliquant sur "Login".
+Il est également possible si l'utilisateur possède déjà un compte utilisateur de se connecter directement au site en cliquant sur "Login".
 <p align="center"><img src="https://i.postimg.cc/fT1TYTw8/login.png" width="600" title="login"></p>
 
 - Ajout de recette avec fichier média : <br/>
-Après s'être identifier l'utilisateur aura à présent la possiblité d'ajouter des recettes en cliquant sur le bouton "ajouter une recette".
+Après s'être identifié l'utilisateur aura à présent la possiblité d'ajouter des recettes en cliquant sur le bouton "ajouter une recette".
 <p align="center"><img src="https://i.postimg.cc/x8t5B4dd/add-Recette.png" width="600" title="addRecette"></p>
 
-Ce bouton amène l'utilisateur vers le formulaire d'ajout d'une recette dans lequel il pourra saisir les différentes informations de la recette et ajouté une image pour celle-ci, il aura également la possibilité d'avoir une "preview" de l'image avant l'ajout de celle-ci.
+Ce bouton amène l'utilisateur vers le formulaire d'ajout d'une recette dans lequel il pourra saisir les différentes informations de la recette et ajouter une image pour celle-ci, il aura également la possibilité d'avoir une "preview" de l'image avant l'ajout de celle-ci.
 <p align="center"><img src="https://i.postimg.cc/3rVPBtqZ/add-Recette-Form.png" width="600" title="addRecetteForm"></p>
 
 - Modifier et Supprimer : <br/>
@@ -95,7 +97,7 @@ Après l'ajout d'une recette l'utilisateur propriétaire (le créateur de la rec
 En cliquant sur l'icone de modification l'utilisateur va accéder au formulaire de modification, formulaire dans lequel les informations de la recette seront déjà pré-rempli. L'utilisateur n'aura plus qu'a y mettre ces modifications.
 <p align="center"><img src="https://i.postimg.cc/Gtn3Zb2c/editForm.png" width="600" title="RecetteCreator"></p> <br/>
 
-L'utilisateur aura aussi la possibiltié de supprimer sa recette en cliquant sur l'icone de suppression, résultant à la suppresion de sa recette de la base de donnée.
+L'utilisateur aura aussi la possibiltié de supprimer sa recette en cliquant sur l'icône de suppression, résultant à la suppression de sa recette de la base de donnée.
 <p align="center"><img src="https://i.postimg.cc/PqZ5KLX6/delete.png" width="600" title="RecetteDelete"></p> <br/>
 
 - Visualisation du détail d'une recette : <br/>
@@ -122,6 +124,11 @@ Cette à dire consulter, modifier, supprimer, ajouter des recettes et même écr
 
 - Autres fonctionnalités : <br/>
 Une vérification des formulaires est effectuer avant la validation de chaque formulaire afin d'éviter tout bug.
+
+- Difficultés rencontrées : <br/>
+Les premières difficultés que nous avons rencontrées sont dues a des problèmes de compréhension du sujet et du code fournis.
+Nous avons aussi essayé en vain de mettre en place des components Vuejs, malheureusement ce n'à pas abouti et nous nous sommes contraints à des vues classiques.
+Hormis ça, les difficultés mineurs sont dues au fait que nous ne connaissions pas ce framework, nous avons donc passé beaucoup de temps à nous documenter sur internet.
 
 
 
