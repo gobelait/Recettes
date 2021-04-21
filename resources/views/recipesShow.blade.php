@@ -9,7 +9,7 @@
 <div class="container-fluid">
 
     <div class="column">
-        <h1 class="text-center">Recette : {{$recipe->title}} </h1>
+        <h1 class="text-center">{{$recipe->tags}} : {{$recipe->title}} </h1>
         <h1 class="text-center"> Auteur : {{$author->name}} </h1>
 
         <div class="column text-center">

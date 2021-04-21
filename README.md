@@ -10,7 +10,7 @@
 ### 2eme étape: Installation des dépendances et packages nécessaires.
 - Installation des dépendances composer avec la commande : `composer install`
 - Installation des dépendances npm avec la commande : `npm install`
-- 
+
 #### Package utilisé :
 - Installer le package [https://github.com/laravel/ui](laravel/ui) avec la commande `composer require laravel/ui --dev`
 - Installer le package [https://laravelcollective.com/docs](laravelcollective/html) avec la commande `composer require laravelcollective/html` 
@@ -34,7 +34,8 @@ Puis vérifier que dans le fichier *.env* nous avons bien ces informations :
 `DB_CONNECTION=sqlite`\
 `DB_DATABASE=../database/database.db`
 
-Cela va permettre l'utilisation de la base de donnée *database.db*
+Cela va permettre l'utilisation de la base de donnée *database.db* <br />
+<ins>N.B:</ins> Si le fichier **.env** n'existe pas créer celui-ci.
 
 ### 4eme étape: Mise en place de la base de donnée
 
@@ -106,7 +107,8 @@ Un utilisateur connecté a la possibilité de liker une recette. Si il n'est pas
 <p align="center"><img src="https://i.postimg.cc/d0129f37/Screenshot-2021-04-21-Cooking-Welcome-3.png" width="600" title="CommentOnRecette"></p> <br/>
 
 - Ecrire des commentaires : <br/>
-Après s'être connecté l'utilisateur va débloquer un nouvel aspect lors de la consultation d'une recette qui est la possibilité d'écrire des commentaires. (Soumission du formulaire en Ajax)
+Après s'être connecté l'utilisateur va débloquer un nouvel aspect lors de la consultation d'une recette qui est la possibilité d'écrire des commentaires. (Soumission du formulaire en Ajax).
+De plus, les utilisateurs peuvent supprimer les commentaires des recettes qui leurs appartiennent.
 <p align="center"><img src="https://i.postimg.cc/xdRDVc3J/Screenshot-2021-04-21-Cooking-Welcome.png" width="600" title="CommentOnRecette"></p> <br/>
 
 
